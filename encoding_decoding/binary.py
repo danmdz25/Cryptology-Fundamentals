@@ -1,4 +1,4 @@
-with open ("binary.txt","r") as f:
+with open ("encoding_decoding/binary.txt","r") as f:
     binary = f.read()
 
 binary_w_comma = binary.replace(" ",",")
@@ -7,4 +7,5 @@ phrase = ""
 for i in binary_list:
     decode_text = chr(int(i,2))
     phrase += decode_text
+
 print(phrase)
