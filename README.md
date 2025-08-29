@@ -15,13 +15,101 @@ Este repositório documenta meus estudos e práticas relacionados ao **Módulo 2
 ## 📦 Encoding e Decodificação
 
 Aprendi a identificar e converter diferentes tipos de codificações para texto legível, utilizando `Python`:
+## Identificação:
 
-* **Hexadecimal**: Conversão de strings hexadecimais para texto.
-* **Binário**: Decodificação de strings binárias para caracteres ASCII.
-* **Base32**: Uso do módulo `base64` para decodificação de `Base32`.
-* **Quoted-Printable**: Manipulação de bytes com os módulos `quopri` e `io.BytesIO`.
-* **HTML Entities**: Conversão de entidades HTML (`&lt;`, `&gt;`, etc.) para seus caracteres correspondentes.
-* **UUencoding**: Decodificação de dados no formato UUencode usando o módulo `uu`.
+### ✳️ Hex Encoding
+
+Codifica dados em representação hexadecimal, utilizando dígitos de 0 a 9 e letras de A a F para representar bytes.
+
+- **Exemplo**: `"48656c6c6f"` → `"Hello"`
+- **Uso**: Ferramenta comum em dumps de memória e codificação binária.
+
+---
+
+### 🌐 URL Encoding (Percent-Encoding)
+
+Codifica caracteres especiais em URLs utilizando `%` seguido por dois dígitos hexadecimais.
+
+- **Exemplo**: `"Hello World!"` → `"Hello%20World%21"`
+- **Uso**: Necessária para transmitir dados seguros por URLs.
+
+---
+
+### 🔤 ASCII (American Standard Code for Information Interchange)
+
+Conjunto padrão de codificação de caracteres que representa texto em computadores.
+
+- **Exemplo**: `72 101 108 108 111` (em decimal) → `"Hello"`
+- **Uso**: Base para diversas codificações modernas (UTF-8, etc.).
+
+---
+
+### 🔢 Binary Encoding
+
+Representa caracteres usando sequências de 0s e 1s (bits).
+
+- **Exemplo**: `"01001000 01100101 01101100 01101100 01101111"` → `"Hello"`
+- **Uso**: Comunicação de baixo nível entre sistemas.
+
+---
+
+### 📦 Base64
+
+Codifica dados binários como texto ASCII usando 64 caracteres (A-Z, a-z, 0-9, + e /).
+
+- **Exemplo**: `"Hello"` → `"SGVsbG8="`
+- **Uso**: Embutir dados binários (como imagens) em texto, por exemplo em e-mails ou JSON.
+
+---
+
+### 📦 Base32
+
+Semelhante ao Base64, mas usa 32 caracteres seguros para nomes de arquivos e URLs.
+
+- **Exemplo**: `"Hello"` → `"JBSWY3DP"`
+- **Uso**: Alternativa segura ao Base64 quando se exige compatibilidade com sistemas sensíveis a caracteres especiais.
+
+---
+
+### 🧩 HTML Character Entities
+
+Representa caracteres especiais em HTML com uma entidade iniciada por `&`.
+
+- **Exemplo**: `"&lt;"` → `"<"`
+- **Uso**: Prevenção de injeção de código HTML/JS (XSS).
+
+---
+
+### 📄 Quoted-Printable
+
+Codificação usada em e-mails para transmitir dados binários ou caracteres especiais em texto ASCII.
+
+- **Exemplo**: `"Hello=0AWorld"` → `"Hello\nWorld"`
+- **Uso**: Usado por MIME para envio de e-mails com caracteres especiais.
+
+---
+
+### 📁 UUEncoding (Unix-to-Unix Encoding)
+
+Codifica dados binários em texto para transmissão entre sistemas Unix.
+
+- **Exemplo**: Arquivos `.uu` contendo dados codificados.
+- **Uso**: Comunicação entre sistemas que não suportam dados binários diretamente.
+
+  
+---
+## Conversão:
+
+* **Hexadecimal**: Conversão de strings hexadecimais para texto, usando as funções built-in `bytes.fromhex` () e `.decode()` do python
+* **Binário**: Decodificação de strings binárias para caracteres ASCII, usando as funções built-in `chr()` e `int()`.
+* **Base64**: Uso do módulo `base64` para decodificação de `Base64`, usando as funções `base64.b64decode()` e `.decode()`.
+* **Base32**: Uso do módulo `base64` para decodificação de `Base32`, usando as funções `base64.b64decode()` e `.decode()`.
+* **Quoted-Printable**: Manipulação de bytes com os módulos `quopri` e `io.BytesIO`, usando as funções `io.BytesIO()`, `quopri.decode()`, `.decode()` e `.getvalue()`
+* **HTML Entities**: Conversão de entidades HTML (`&lt;`, `&gt;`, etc.) para seus caracteres correspondentes, usando o módulo html e a função `html.unescape()`    
+* **UUencoding**: Decodificação de dados no formato UUencode usando o módulo `uu`, usando as funções `io.BytesIO()`, `.getvalue()`, `.decode()` e `.encode()`
+
+  
+---
 
 ## 🔓 Hash Cracking
 
@@ -58,13 +146,102 @@ This repository documents my studies and practices related to **Module 2: Crypto
 ## 📦 Encoding and Decoding
 
 I learned how to identify and convert different types of encodings to readable text using Python:
+## Identification:
 
-* **Hexadecimal**: Conversion of hexadecimal strings to text.
-* **Binary**: Decoding binary strings to ASCII characters.
-* **Base32**: Use of the base64 module for Base32 decoding.
-* **Quoted-Printable**: Manipulating bytes with the `quopri` and `io.BytesIO` modules.
-* **HTML Entities**: Converting HTML entities (`&lt;`, `&gt;`, etc.) to their corresponding characters.
-* **UUencoding**: Decoding data in UUencode format using the `uu` module.
+### ✳️ Hex Encoding
+
+Encodes data in hexadecimal representation, using digits from 0 to 9 and letters from A to F to represent bytes.
+
+- **Example**: `“48656c6c6f”` → `“Hello”`
+- **Use**: Common tool in memory dumps and binary encoding.
+
+---
+
+### 🌐 URL Encoding (Percent-Encoding)
+
+Encodes special characters in URLs using `%` followed by two hexadecimal digits.
+
+- **Example**: `“Hello World!”` → `“Hello%20World%21”`
+- **Use**: Necessary for transmitting secure data via URLs.
+
+---
+
+### 🔤 ASCII (American Standard Code for Information Interchange)
+
+Standard character encoding set that represents text on computers.
+
+- **Example**: `72 101 108 108 111` (in decimal) → `“Hello”`
+- **Use**: Basis for several modern encodings (UTF-8, etc.).
+
+---
+
+### 🔢 Binary Encoding
+
+Represents characters using sequences of 0s and 1s (bits).
+
+- **Example**: `“01001000 01100101 01101100 01101100 01101111”` → `“Hello”`
+- **Use**: Low-level communication between systems.
+
+---
+
+### 📦 Base64
+
+Encodes binary data as ASCII text using 64 characters (A-Z, a-z, 0-9, +, and /).
+
+- **Example**: `“Hello”` → `“SGVsbG8=”`
+- **Use**: Embedding binary data (such as images) in text, for example in emails or JSON.
+
+---
+
+### 📦 Base32
+
+Similar to Base64, but uses 32 characters that are safe for filenames and URLs.
+
+- **Example**: `“Hello”` → `“JBSWY3DP”`
+- **Usage**: Safe alternative to Base64 when compatibility with special character-sensitive systems is required.
+
+---
+
+### 🧩 HTML Character Entities
+
+Represents special characters in HTML with an entity starting with `&`.
+
+- **Example**: `“&lt;”` → `“<”`
+- **Usage**: Prevention of HTML/JS code injection (XSS).
+
+---
+
+### 📄 Quoted-Printable
+
+Encoding used in emails to transmit binary data or special characters in ASCII text.
+
+- **Example**: `“Hello=0AWorld”` → `“Hello\nWorld”`
+- **Usage**: Used by MIME for sending emails with special characters.
+
+---
+
+### 📁 UUEncoding (Unix-to-Unix Encoding)
+
+Encodes binary data into text for transmission between Unix systems.
+
+- **Example**: `.uu` files containing encoded data.
+- **Usage**: Communication between systems that do not directly support binary data.
+
+  
+---
+## Conversion:
+
+* **Hexadecimal**: Conversion of hexadecimal strings to text, using the built-in functions `bytes.fromhex` () and `.decode()` from Python
+* **Binary**: Decoding of binary strings to ASCII characters, using the built-in functions `chr()` and `int()`.
+* **Base64**: Use of the `base64` module for decoding `Base64`, using the `base64.b64decode()` and `.decode()` functions.
+* **Base32**: Use of the `base64` module for decoding `Base32`, using the functions `base64.b64decode()` and `.decode()`.
+* **Quoted-Printable**: Manipulation of bytes with the `quopri` and `io.BytesIO` modules, using the functions `io.BytesIO()`, `quopri.decode()`, `.decode()`, and `.getvalue()`
+* **HTML Entities**: Conversion of HTML entities (`&lt;`, `&gt;`, etc.) to their corresponding characters, using the html module and the `html.unescape()` function    
+* **UUencoding**: Decoding data in UUencode format using the `uu` module, using the functions `io.BytesIO()`, `.getvalue()`, `.decode()`, and `.encode()`
+
+  
+---
+
 
 ## 🔓 Hash Cracking
 
