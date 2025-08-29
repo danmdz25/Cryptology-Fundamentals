@@ -1,7 +1,7 @@
 import quopri
 import io
 
-with open('quoted-printable.txt', 'r') as f:
+with open('encoding_decoding/quoted-printable.txt', 'r') as f:
     encoded_data = f.read()
 
 input_file = io.BytesIO(encoded_data.encode('utf-8'))
@@ -11,4 +11,5 @@ decoded_bytes = output_file.getvalue()
 decoded_string = decoded_bytes.decode('utf-8', errors='ignore')
 
 print(decoded_string)
+
 
